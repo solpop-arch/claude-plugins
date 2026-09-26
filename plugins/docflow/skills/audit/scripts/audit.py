@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """docflow audit — deterministic layout checks for a project root.
 
-Usage: audit.py [ROOT] [--json]
-Exit code: 0 if no errors, 1 if any error-level finding.
+Usage: audit.py [ROOT] [--json] [--strict]
+Exit code: always 0, so it is safe inside a skill's !`...` injection
+(a non-zero exit there aborts the skill silently). With --strict, exit 1
+if any error-level finding (for CI).
 """
 import json
 import re
@@ -79,7 +81,8 @@ def audit(root: Path):
 
 def main(argv):
     as_json = "--json" in argv
-    args = [a for a in argv if a != "--json"]
+    strict = "--strict" in argv
+    args = [a for a in argv if a not in ("--json", "--strict")]
     root = Path(args[0] if args else ".").resolve()
     findings = audit(root)
     errors = sum(f["level"] == "error" for f in findings)
@@ -95,7 +98,7 @@ def main(argv):
             mark = "✖" if f["level"] == "error" else "⚠"
             print(f"  {mark} [{f['rule']}] {f['path']} — {f['message']}\n      → {f['fix']}")
         print(f"  {errors} error(s), {len(findings) - errors} warning(s)")
-    return 1 if errors else 0
+    return 1 if (strict and errors) else 0
 
 
 if __name__ == "__main__":

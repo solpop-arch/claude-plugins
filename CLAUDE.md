@@ -21,4 +21,5 @@
 ## Gotchas
 
 - The marketplace entry `name` must equal the `name` in the plugin's plugin.json, or installs fail with "not found in marketplace".
+- A command in a skill's !`...` injection that exits non-zero, or isn't pre-approved, aborts the whole skill **silently** under `claude -p` (no output). Keep injected commands exit-0 and pre-approve them narrowly in `allowed-tools` (e.g. `Bash(python3 *audit.py*)`).
 - Relative `source` paths are written from the marketplace root and must not contain `..`.
