@@ -1,0 +1,13 @@
+{
+  "name": "docflow",
+  "displayName": "Docflow",
+  "description": "Opinionated project documentation layout for Claude Code: root CLAUDE.md + README only, a fixed docs/ tree anchored on product.md, and a four-section CLAUDE.md (setup, current work, backlog, gotchas) that replaces task files. Includes /docflow:init to scaffold and /docflow:audit to check.",
+  "author": {
+    "name": "solpop",
+    "url": "https://github.com/solpop-arch"
+  },
+  "homepage": "https://github.com/solpop-arch/claude-plugins/tree/main/plugins/docflow",
+  "repository": "https://github.com/solpop-arch/claude-plugins",
+  "license": "MIT",
+  "keywords": ["documentation", "claude-md", "project-structure", "workflow", "docs"]
+}

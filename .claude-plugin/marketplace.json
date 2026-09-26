@@ -1,0 +1,15 @@
+{
+  "name": "solpop",
+  "description": "Claude Code plugins by solpop",
+  "owner": {
+    "name": "solpop",
+    "url": "https://github.com/solpop-arch"
+  },
+  "plugins": [
+    {
+      "name": "docflow",
+      "source": "./plugins/docflow",
+      "description": "Keep project docs in one predictable place: fixed docs/ tree, product.md hub, four-section CLAUDE.md instead of task files. /docflow:init and /docflow:audit included."
+    }
+  ]
+}
